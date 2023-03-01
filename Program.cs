@@ -17,13 +17,14 @@ namespace Lab2
         {
             Console.OutputEncoding = System.Text.Encoding.Default;
             Vector[] vectors = new Vector[size];
-            for (int i = 0;i < 3;)
+            for (int i = -1;i < 3;)
             {
                 Console.WriteLine("\nВведіть наступну дію:\n(new - створити новий вектор)\n(change - змінити координати вектора)\n(data - отримати дані про даний вектор)\n(end - завершити виконання програми)");
                 string request = Console.ReadLine();
                 Console.Clear();
                 if (request == "new")
                 {
+                    i++;
                     if (i == 3)
                     {
                         Console.Clear();
@@ -36,10 +37,9 @@ namespace Lab2
                     temp = Console.ReadLine();
                     int angle = Convert.ToInt32(temp);
                     vectors[i] = new Vector(angle, length);
-                    i++;
                     continue;
                 }
-                else if (request == "change" && i != 0)
+                else if (request == "change" && i != -1)
                 {
                     Console.Write("Введіть координати вектора:\nX = ");
                     float X = (float)Math.Round(float.Parse(Console.ReadLine()), 2);
@@ -50,7 +50,7 @@ namespace Lab2
                     vectors[i].vectorData();
                     continue;
                 }
-                else if (request == "data" && i != 0)
+                else if (request == "data" && i != -1)
                 {
                     vectors[i].vectorData();
                     continue;
@@ -62,6 +62,7 @@ namespace Lab2
                 }
             }
             init(vectors);
+            Console.ReadLine();
         }
     }
 }
